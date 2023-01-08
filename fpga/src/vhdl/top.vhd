@@ -13,7 +13,9 @@ end top;
 architecture Behavioral of top is
     signal fpga_clk : std_logic := '0';
     signal pwm_load : std_logic := '0';
+    signal pwm_ctrl_s : std_logic_vector(9 downto 0) := (others => '0');
 begin
+    pwm_ctrl <= pwm_ctrl_s(7 downto 0);
     ps7_stub: entity work.ps7_stub(RTL)
         port map(
             fpga_clk => fpga_clk
@@ -22,11 +24,11 @@ begin
         generic map (
             refclk_period => 40,
             pwm_period => 20000000,
-            pwm_bits => 8
+            pwm_bits => 10
         )
         port map (
             ref_clk => fpga_clk, -- in std_logic;
-            pwm_ctrl => pwm_ctrl, -- in std_logic_vector(pwm_bits - 1 downto 0);
+            pwm_ctrl => pwm_ctrl_s, -- in std_logic_vector(pwm_bits - 1 downto 0);
             pwm_load => pwm_load,
             pwm_out => pwm_out -- out std_logic
         );
@@ -39,7 +41,7 @@ begin
             ref_clk => fpga_clk, -- in std_logic;
             rx => rx, -- in std_logic;
             reset => reset, -- in std_logic;
-            data_out => pwm_ctrl, -- out std_logic_vector(7 downto 0);
+            data_out => pwm_ctrl_s(7 downto 0), -- out std_logic_vector(7 downto 0);
             data_out_valid => pwm_load, -- out std_logic;
             consumer_ready => '1' -- in std_logic
         );
