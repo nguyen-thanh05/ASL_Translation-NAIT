@@ -1,5 +1,5 @@
 run_top_tb: elab_top_tb
-	ghdl -r --std=08 top_tb --wave=top.ghw --stop-time=15ns
+	ghdl -r --std=08 top_tb --wave=top.ghw --stop-time=800ns
 
 elab_top_tb: import_vhdl
 	ghdl -m --std=08 top_tb
@@ -17,9 +17,12 @@ elab_uart_rx_tb: import_vhdl
 	ghdl -m --std=08 uart_rx_tb
 
 import_vhdl:
-	ghdl -i --std=08 ../src/vhdl/pwm.vhd
+	ghdl -i --std=08 ../src/vhdl/top.vhd
+	ghdl -i --std=08 ../src/vhdl/servo_bank.vhd
+	ghdl -i --std=08 ../src/vhdl/servo.vhd
+	ghdl -i --std=08 ../src/vhdl/uart_parser.vhd
 	ghdl -i --std=08 ../src/vhdl/uart_rx.vhd
-	ghdl -i --std=08 ./*_tb.vhd
+	ghdl -i --std=08 ./*.vhd
 
 clean:
 	rm -f work*.cf
