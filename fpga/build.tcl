@@ -1,4 +1,4 @@
-read_vhdl -vhdl2008 { src/vhdl/top.vhd src/vhdl/ps_stub.vhd src/vhdl/pwm.vhd }
+read_vhdl -vhdl2008 [ glob src/vhdl/*.vhd ]
 
 synth_design -top top -part xc7z010clg400-1
 write_checkpoint -force top-synth.dcp
