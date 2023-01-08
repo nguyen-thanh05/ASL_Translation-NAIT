@@ -32,7 +32,7 @@ begin
             pwm_load => pwm_load,
             pwm_out => pwm_out -- out std_logic
         );
-        uart_rx_inst : entity work.uart_rx(Behavioral)
+    uart_rx_inst : entity work.uart_rx(Behavioral)
         generic map (
             refclk_freq => 25000000,
             baud_rate => 115200
