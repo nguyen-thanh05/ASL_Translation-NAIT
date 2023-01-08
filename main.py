@@ -41,6 +41,7 @@ def callback(dict):
     
     input_as_int = [int(element) for element in dict["values"]]
     input_tensor = torch.tensor(input_as_int, dtype=torch.FloatTensor).unsqueeze().cuda()
+    input_tensor /= 4095
     
     prediction = nn.Softmax(dim = 1)(model(input_tensor))
     pred_class = torch.argmax(prediction, dim = 1)
