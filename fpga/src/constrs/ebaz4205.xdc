@@ -28,7 +28,7 @@
 #
 # set_property -dict {PACKAGE_PIN V15 IOSTANDARD LVCMOS33} [get_ports { }]; # J5-3
 # set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33} [get_ports { }]; # J5-4
-create_clock -add -name pwm_ref_clk -period 40.00 [get_nets pwm_ref_clk]
+create_clock -add -name pwm_ref_clk -period 40.00 [get_nets fpga_clk]
 set_property -dict {PACKAGE_PIN A20 IOSTANDARD LVCMOS33} [get_ports rx ]; # DATA1-5
 set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports { pwm_out[0] } ]; # DATA1-6
 set_property -dict {PACKAGE_PIN B19 IOSTANDARD LVCMOS33} [get_ports reset ]; # DATA1-7

@@ -21,6 +21,7 @@ architecture Behavioral of servo_bank is
     type pwm_reg_arr is array (0 to num_channels - 1) of std_logic_vector(pwm_bits - 1 downto 0);
     signal pwm_regs : pwm_reg_arr := (others => (others => '0'));
     signal pwm_data : std_logic_vector(pwm_bits - 1 downto 0);
+    signal load_regs : std_logic := '0';
 begin
     servo_inst: entity work.servo(Behavioral)
         generic map (
@@ -54,7 +55,8 @@ begin
 	    if reset = '1' then
 		pwm_regs <= (others => (others => '0'));
 	    else
-		if load = '1' then
+		load_regs <= load;
+		if load_regs = '1' then
 		    pwm_regs(address) <= pwm_data;
 		end if;
 	    end if;
