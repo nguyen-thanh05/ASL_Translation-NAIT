@@ -15,3 +15,4 @@ pld load 0 top.bit
 zynq.cpu0 mww 0xF8000900 0xF
 # SLCR Lock
 zynq.cpu0 mww 0xF8000004 0x767B
+exit

@@ -28,21 +28,21 @@
 #
 # set_property -dict {PACKAGE_PIN V15 IOSTANDARD LVCMOS33} [get_ports { }]; # J5-3
 # set_property -dict {PACKAGE_PIN V12 IOSTANDARD LVCMOS33} [get_ports { }]; # J5-4
-
-# set_property -dict {PACKAGE_PIN A20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-5
-# set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-6
+create_clock -add -name pwm_ref_clk -period 40.00 [get_nets pwm_ref_clk]
+set_property -dict {PACKAGE_PIN A20 IOSTANDARD LVCMOS33} [get_ports pwm_load ]; # DATA1-5
+set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports pwm_out ]; # DATA1-6
 # set_property -dict {PACKAGE_PIN B19 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-7
 # set_property -dict {PACKAGE_PIN B20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-8
 # set_property -dict {PACKAGE_PIN C20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-9
 # set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-11
-# set_property -dict {PACKAGE_PIN D20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-13
-# set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-14
-# set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-15
-# set_property -dict {PACKAGE_PIN D19 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-16
-# set_property -dict {PACKAGE_PIN F20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-17
-# set_property -dict {PACKAGE_PIN E19 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-18
-# set_property -dict {PACKAGE_PIN F19 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-19
-# set_property -dict {PACKAGE_PIN K17 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA1-20
+set_property -dict {PACKAGE_PIN D20 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[0] }]; # DATA1-13
+set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[1] }]; # DATA1-14
+set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[2] }]; # DATA1-15
+set_property -dict {PACKAGE_PIN D19 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[3] }]; # DATA1-16
+set_property -dict {PACKAGE_PIN F20 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[4] }]; # DATA1-17
+set_property -dict {PACKAGE_PIN E19 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[5] }]; # DATA1-18
+set_property -dict {PACKAGE_PIN F19 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[6] }]; # DATA1-19
+set_property -dict {PACKAGE_PIN K17 IOSTANDARD LVCMOS33} [get_ports { pwm_ctrl[7] }]; # DATA1-20
  
 # set_property -dict {PACKAGE_PIN G20 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA2-5
 # set_property -dict {PACKAGE_PIN J18 IOSTANDARD LVCMOS33} [get_ports { }]; # DATA2-6
