@@ -11,7 +11,6 @@ entity pwm is
     port (
         ref_clk : in std_logic;
         pwm_ctrl : in std_logic_vector(pwm_bits - 1 downto 0);
-        pwm_load : in std_logic;
         pwm_out : out std_logic
     );
 end entity;
@@ -33,9 +32,7 @@ begin
     begin
         if rising_edge(ref_clk) then
             if cycle_clk_counter = cycle_clk_count_t'high then
-                if pwm_load = '1' then
-                    pwm_ctrl_reg <= pwm_ctrl;
-                end if;
+                pwm_ctrl_reg <= pwm_ctrl;
                 cycle_clk_counter <= 0;
                 step_clk_counter <= 0;
                 step_counter <= 0;

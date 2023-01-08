@@ -10,7 +10,7 @@ entity servo is
     );
     port (
         clk : in std_logic;
-        angle : in std_logic_vector(7 downto 0);
+        angle : in natural range 0 to 180;
         pwm_data : out std_logic_vector(pwm_bits - 1 downto 0)
     );
 end entity;
@@ -32,7 +32,7 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            pwm_data <= deg_to_pwm(to_integer(unsigned(angle)));
+            pwm_data <= deg_to_pwm(angle);
         end if;
     end process; 
 end Behavioral;

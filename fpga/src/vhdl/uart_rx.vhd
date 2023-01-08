@@ -30,6 +30,7 @@ begin
 	    if reset = '0' then
 		case state is
 		    when IDLE =>
+			data_out_valid <= '0';
 			if rx = '0' then
 			    counter <= counter + 1;
 			    if counter = clks_per_bit / 2 - 1 then
