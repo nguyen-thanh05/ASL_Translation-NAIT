@@ -13,7 +13,8 @@ entity servo_bank is
         pwm_out : out std_logic_vector(0 to num_channels-1);
         address : in natural range 0 to num_channels - 1;
 	angle : in natural range 0 to 180;
-        reset : in std_logic
+        reset : in std_logic;
+	reset_value : in std_logic_vector(pwm_bits  - 1 downto 0)
     );
 end servo_bank;
 
@@ -53,7 +54,7 @@ begin
     begin
 	if rising_edge(clk) then
 	    if reset = '1' then
-		pwm_regs <= (others => (others => '0'));
+		pwm_regs <= (others => reset_value);
 	    else
 		load_regs <= load;
 		if load_regs = '1' then
